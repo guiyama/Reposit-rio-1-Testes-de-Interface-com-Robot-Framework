@@ -23,7 +23,7 @@ Os testes automatizados contemplam os seguintes cenários:
 - Python 3  
 - Robot Framework  
 - SeleniumLibrary  
-- Google Chrome  
+- Firefox  
 
 ---
 
@@ -32,7 +32,7 @@ Os testes automatizados contemplam os seguintes cenários:
 Antes de executar os testes, verifique se você possui:
 
 - Python **3.9 ou superior** instalado
-- Google Chrome instalado no sistema
+- Firefox instalado no sistema
 
 Para verificar a versão do Python:
 
