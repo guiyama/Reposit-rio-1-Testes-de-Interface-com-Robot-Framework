@@ -18,12 +18,6 @@ Login Com Sucesso
     Page Should Contain    Products
     Close Browser
 
-*** Keywords ***
-Create Headless Browser
-    ${options}=    Evaluate    sys.modules['selenium.webdriver'].FirefoxOptions()    sys, selenium.webdriver
-    Call Method    ${options}    add_argument    -headless
-    Open Browser   https://www.saucedemo.com    firefox    options=${options}
-
 Checkout Com Sucesso
     Open Browser    ${URL}   ${BROWSER}
     Maximize Browser Window
@@ -49,6 +43,13 @@ Checkout Com Sucesso
     Page Should Contain    Thank you for your order!
 
     Close Browser
+
+*** Keywords ***
+Create Headless Browser
+    ${options}=    Evaluate    sys.modules['selenium.webdriver'].FirefoxOptions()    sys, selenium.webdriver
+    Call Method    ${options}    add_argument    -headless
+    Open Browser   https://www.saucedemo.com    firefox    options=${options}
+
 
 
 
