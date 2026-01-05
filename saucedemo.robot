@@ -20,11 +20,9 @@ Login Com Sucesso
 
 *** Keywords ***
 Create Headless Browser
-    ${options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
-    Call Method    ${options}    add_argument    --headless
-    Call Method    ${options}    add_argument    --no-sandbox
-    Call Method    ${options}    add_argument    --disable-dev-shm-usage
-    Create Webdriver    Firefox    options=${options}
+    ${options}=    Evaluate    sys.modules['selenium.webdriver'].FirefoxOptions()    sys, selenium.webdriver
+    Call Method    ${options}    add_argument    -headless
+    Open Browser   https://www.saucedemo.com    firefox    options=${options}
 
 Checkout Com Sucesso
     Open Browser    ${URL}   ${BROWSER}
@@ -51,6 +49,7 @@ Checkout Com Sucesso
     Page Should Contain    Thank you for your order!
 
     Close Browser
+
 
 
 
