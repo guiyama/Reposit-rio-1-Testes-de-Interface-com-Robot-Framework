@@ -1,4 +1,4 @@
-name: Robot Framework UI Tests
+name: Robot Framework UI Tests (Firefox)
 
 on:
   push:
@@ -19,19 +19,19 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Instalar dependências
+      - name: Instalar Geckodriver
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y firefox-geckodriver
+
+      - name: Instalar dependências Python
         run: |
           pip install robotframework
           pip install robotframework-seleniumlibrary
 
-      - name: Instalar Firefox  ESR
+      - name: Executar testes Robot Framework (Firefox headless)
         run: |
-          sudo apt-get update
-          sudo apt-get install -y firefox-esr
-
-      - name: Executar testes Robot Framework
-        run: |
-          robot --outputdir results tests/
+          robot --variable BROWSER:headlessfirefox --outputdir results tests/
 
       - name: Upload resultados
         uses: actions/upload-artifact@v4
