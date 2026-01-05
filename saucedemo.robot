@@ -3,7 +3,7 @@ Library    SeleniumLibrary
 
 *** Variables ***
 ${URL}      https://www.saucedemo.com/
-${BROWSER}  Chrome
+${BROWSER}  Firefox
 ${OPTIONS}    --headless --no-sandbox --disable-dev-shm-usage
 ${USER}     standard_user
 ${PASS}     secret_sauce
@@ -24,7 +24,7 @@ Create Headless Browser
     Call Method    ${options}    add_argument    --headless
     Call Method    ${options}    add_argument    --no-sandbox
     Call Method    ${options}    add_argument    --disable-dev-shm-usage
-    Create Webdriver    Chrome    options=${options}
+    Create Webdriver    Firefox    options=${options}
 
 Checkout Com Sucesso
     Open Browser    ${URL}   ${BROWSER}
@@ -51,6 +51,7 @@ Checkout Com Sucesso
     Page Should Contain    Thank you for your order!
 
     Close Browser
+
 
 
 
