@@ -39,4 +39,5 @@ Checkout Com Sucesso
     Click Button  id=finish
 
     Page Should Contain    Thank you for your order!
+
     Close Browser
