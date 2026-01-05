@@ -3,7 +3,7 @@ Library    SeleniumLibrary
 
 *** Variables ***
 ${URL}      https://www.saucedemo.com/
-${BROWSER}  Firefox
+${BROWSER}  Chrome
 ${USER}     standard_user
 ${PASS}     secret_sauce
 
@@ -41,3 +41,4 @@ Checkout Com Sucesso
     Page Should Contain    Thank you for your order!
 
     Close Browser
+
