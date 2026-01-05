@@ -4,12 +4,13 @@ Library    SeleniumLibrary
 *** Variables ***
 ${URL}      https://www.saucedemo.com/
 ${BROWSER}  Chrome
+${OPTIONS}    add_argument(--headless)    add_argument(--no-sandbox)    add_argument(--disable-dev-shm-usage)
 ${USER}     standard_user
 ${PASS}     secret_sauce
 
 *** Test Cases ***
 Login Com Sucesso
-    Open Browser    ${URL}    ${BROWSER}
+    Open Browser    https://www.saucedemo.com    ${BROWSER}    options=${OPTIONS}
     Input Text      id:user-name    ${USER}
     Input Text      id:password     ${PASS}
     Click Button    id:login-button
@@ -41,4 +42,5 @@ Checkout Com Sucesso
     Page Should Contain    Thank you for your order!
 
     Close Browser
+
 
