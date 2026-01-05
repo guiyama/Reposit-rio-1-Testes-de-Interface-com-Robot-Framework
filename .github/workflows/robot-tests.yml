@@ -19,13 +19,13 @@ jobs:
           pip install robotframework
           pip install robotframework-seleniumlibrary
 
-      - name: Instalar Google Chrome
+      - name: Instalar Firefox  ESR
         run: |
           sudo apt-get update
-          sudo apt-get install -y google-chrome-stable
+          sudo apt-get install -y firefox-esr
 
       - name: Executar testes Robot Framework
-        run: robot --outputdir results .
+          run: robot --outputdir results .
 
       - name: Upload resultados
         uses: actions/upload-artifact@v4
