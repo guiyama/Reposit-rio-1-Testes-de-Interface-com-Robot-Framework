@@ -1,31 +1,30 @@
 name: Robot Framework UI Tests
 
-on:
-  push:
-    branches: [ "main" ]
-  pull_request:
+on: [push]
 
 jobs:
   robot-tests:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout do código
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Setup Python
-        uses: actions/setup-python@v5
+      - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
-      - name: Instalar dependências
+      - name: Instalar Robot Framework
         run: |
           pip install robotframework
-          pip install robotframework-seleniumlibrary
 
       - name: Executar testes Robot Framework
-        run: |
-          robot --outputdir results tests/
+        run: robot --outputdir results .
+
+      - name: Upload resultados
+        uses: actions/upload-artifact@v4
+        with:
+          name: robot-results
+          path: results/
 
       - name: Upload de relatórios
         if: always()
