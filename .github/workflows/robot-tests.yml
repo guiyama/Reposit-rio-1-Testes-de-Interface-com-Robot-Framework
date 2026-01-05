@@ -19,11 +19,6 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Instalar Geckodriver
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y firefox-geckodriver
-
       - name: Instalar dependências Python
         run: |
           pip install robotframework
