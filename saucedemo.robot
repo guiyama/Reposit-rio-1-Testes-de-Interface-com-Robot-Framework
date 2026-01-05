@@ -10,12 +10,21 @@ ${PASS}     secret_sauce
 
 *** Test Cases ***
 Login Com Sucesso
-    Open Browser    https://www.saucedemo.com    chrome    options=--headless=new --no-sandbox --disable-dev-shm-usage
+    Create Headless Browser
+    Go To    https://www.saucedemo.com
     Input Text      id:user-name    ${USER}
     Input Text      id:password     ${PASS}
     Click Button    id:login-button
     Page Should Contain    Products
     Close Browser
+
+*** Keywords ***
+Create Headless Browser
+    ${options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
+    Call Method    ${options}    add_argument    --headless
+    Call Method    ${options}    add_argument    --no-sandbox
+    Call Method    ${options}    add_argument    --disable-dev-shm-usage
+    Create Webdriver    Chrome    options=${options}
 
 Checkout Com Sucesso
     Open Browser    ${URL}   ${BROWSER}
@@ -42,6 +51,7 @@ Checkout Com Sucesso
     Page Should Contain    Thank you for your order!
 
     Close Browser
+
 
 
 
